@@ -1,4 +1,5 @@
 from pyfiglet import Figlet
+import os
 import math
 
 text = "CLPdev.sst"
@@ -16,6 +17,7 @@ print(colored_result)
 subject = input("Select a subject:\n[1] Math\n[2] Pyshics\n")
 
 if subject == "1":
+  os.system('cls' if os.name == 'nt' else 'clear')
   text = "Mathematics"
   font = "slant"  
 
@@ -260,8 +262,9 @@ if subject == "1":
 
   else:
     print("Invalid fromula selected.")
-  
+
 elif subject == "2":
+  os.system('cls' if os.name == 'nt' else 'clear')
   formulap = input("Select a formula:\n[1] Force\n[2] Acceleration\n")
 
 else:
