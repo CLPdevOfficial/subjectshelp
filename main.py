@@ -1,271 +1,214 @@
-from pyfiglet import Figlet
 import os
 import math
+import sys
+from pyfiglet import Figlet
 
-text = "CLPdev.sst"
-font = "slant"  
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-figlet = Figlet(font=font)
-result = figlet.renderText(text)
+def print_title(text):
+    figlet = Figlet(font="slant")
+    print(f"\033[92m{figlet.renderText(text)}\033[0m")
 
-color_green = '\033[92m'
-reset_color = '\033[0m'
+def get_input(prompt):
+    user_input = input(prompt).strip().lower()
+    if user_input == "x":
+        print("\nExiting the program...")
+        sys.exit(0)
+    return user_input
 
-colored_result = color_green + result + reset_color
+def get_float_input(prompt):
+    while True:
+        try:
+            return float(get_input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
-print(colored_result)
-subject = input("Select a subject:\n[1] Math\n[2] Pyshics\n")
+# ------------------- Mathematics Formulas -------------------
 
-if subject == "1":
-  os.system('cls' if os.name == 'nt' else 'clear')
-  text = "Mathematics"
-  font = "slant"  
-
-  figlet = Figlet(font=font)
-  result = figlet.renderText(text)
-
-  color_green = '\033[92m'
-  reset_color = '\033[0m'
-
-  colored_result = color_green + result + reset_color
-
-  print(colored_result)
-  formulam = input("Select a formula:\n[1] Area of a triangle\n[2] Area of a rectangle\n[3] Area of a circle\n[4] Perimeter of a rectangle\n[5] Circumference of a circle\n[6] Volume of a cube\n[7] Volume of a sphere\n[8] Distance between two points\n[9] Quadratic Formula\n[10] Slope of a line\n[11] Pythagorean Theorem\n")
-  if formulam == "1":
-    text = "Area of a triangle"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Area of a triangle")
+def area_of_triangle():
     print("Formula: A = (base * height) / 2")
-    base = float(input("Enter the base of the triangle: "))
-    height = float(input("Enter the height of the triangle: "))
-    area = 0.5 * base * height
-    print("The area of the triangle is:", area)
+    base = get_float_input("Enter base: ")
+    height = get_float_input("Enter height: ")
+    print(f"Area: {0.5 * base * height}")
 
-  elif formulam == "2":
-    text = "Area of a rectangle"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Area of a rectangle")
+def area_of_rectangle():
     print("Formula: A = length * width")
-    length = float(input("Enter the length of the rectangle: "))
-    width = float(input("Enter the width of the rectangle: "))
-    area = length * width
-    print("The area of the rectangle is:", area)
+    length = get_float_input("Enter length: ")
+    width = get_float_input("Enter width: ")
+    print(f"Area: {length * width}")
 
-  elif formulam == "3":
-    text = "Area of a circle"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Area of a circle")
+def area_of_circle():
     print("Formula: A = π * r²")
-    radius = float(input("Enter the radius of the circle: "))
-    area = math.pi * radius**2
-    print("The area of the circle is:", area)
+    radius = get_float_input("Enter radius: ")
+    print(f"Area: {math.pi * radius**2:.2f}")
 
-  elif formulam == "4":
-    text = "Perimeter of a rectangle"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Perimeter of a rectangle")
+def perimeter_of_rectangle():
     print("Formula: P = 2 * (length + width)")
-    length = float(input("Enter the length of the rectangle: "))
-    width = float(input("Enter the width of the rectangle: "))
-    perimeter = 2 * (length + width)
-    print("The perimeter of the rectangle is:", perimeter)
+    length = get_float_input("Enter length: ")
+    width = get_float_input("Enter width: ")
+    print(f"Perimeter: {2 * (length + width)}")
 
-  elif formulam == "5":
-    text = "Circumference of a circle"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Circumference of a circle")
+def circumference_of_circle():
     print("Formula: C = 2πr")
-    radius = float(input("Enter the radius of the circle: "))
-    circumference = 2 * math.pi * radius
-    print("The circumference of the circle is:", circumference)
+    radius = get_float_input("Enter radius: ")
+    print(f"Circumference: {2 * math.pi * radius:.2f}")
 
-  elif formulam == "6":
-    text = "Volume of a cube"
-    font = "slant"  
+def volume_of_cube():
+    print("Formula: V = side³")
+    side = get_float_input("Enter side length: ")
+    print(f"Volume: {side ** 3}")
 
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Volume of a cube")
-    print("Formula: V = side^3")
-    side = float(input("Enter the side of the cube: "))
-    volume = side**3
-    print("The volume of the cube is:", volume)
-
-  elif formulam == "7":
-    text = "Volume of a sphere"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Volume of a sphere")
-    print("Formula: V = (4/3) * π * r^3")
-    radius = float(input("Enter the radius of the sphere: "))
+def volume_of_sphere():
+    print("Formula: V = (4/3) * π * r³")
+    radius = get_float_input("Enter radius: ")
     volume = (4/3) * math.pi * radius**3
-    print("The volume of the sphere is:", volume)
+    print(f"Volume: {volume:.2f}")
 
-  elif formulam == "8":
-    text = "Distance between two points"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Distance between two points")
+def distance_between_points():
     print("Formula: d = √((x2 - x1)² + (y2 - y1)²)")
-    x1 = float(input("Enter the x-coordinate of the first point: "))
-    y1 = float(input("Enter the y-coordinate of the first point: "))
-    x2 = float(input("Enter the x-coordinate of the second point: "))
-    y2 = float(input("Enter the y-coordinate of the second point: "))
+    x1 = get_float_input("Enter x1: ")
+    y1 = get_float_input("Enter y1: ")
+    x2 = get_float_input("Enter x2: ")
+    y2 = get_float_input("Enter y2: ")
     distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
-    print("The distance between the two points is:", distance)
+    print(f"Distance: {distance:.2f}")
 
-  elif formulam == "9":
-    text = "Quadratic Formula"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Quadratic Formula")
-    print("Formula: x = (-b ± √(b^2 - 4ac)) / 2a")
-    a = float(input("Enter the coefficient of x^2: "))
-    b = float(input("Enter the coefficient of x: "))
-    c = float(input("Enter the constant term: "))
+def quadratic_formula():
+    print("Formula: x = (-b ± √(b² - 4ac)) / 2a")
+    a = get_float_input("Enter a: ")
+    b = get_float_input("Enter b: ")
+    c = get_float_input("Enter c: ")
     discriminant = b**2 - 4*a*c
     if discriminant >= 0:
-      x1 = (-b + math.sqrt(discriminant)) / (2*a)
-      x2 = (-b - math.sqrt(discriminant)) / (2*a)
-      print("The roots of the quadratic equation are:", x1, "and", x2)
+        x1 = (-b + math.sqrt(discriminant)) / (2*a)
+        x2 = (-b - math.sqrt(discriminant)) / (2*a)
+        print(f"Roots: {x1:.2f}, {x2:.2f}")
     else:
-      print("The quadratic equation has no real roots.")
+        print("No real roots.")
 
-  elif formulam == "10":
-    text = "Slope of a line"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Slope of a line")
+def slope_of_line():
     print("Formula: m = (y2 - y1) / (x2 - x1)")
-    x1 = float(input("Enter the x-coordinate of the first point: "))
-    y1 = float(input("Enter the y-coordinate of the first point: "))
-    x2 = float(input("Enter the x-coordinate of the second point: "))
-    y2 = float(input("Enter the y-coordinate of the second point: "))
+    x1 = get_float_input("Enter x1: ")
+    y1 = get_float_input("Enter y1: ")
+    x2 = get_float_input("Enter x2: ")
+    y2 = get_float_input("Enter y2: ")
     if x2 - x1 != 0:
-      slope = (y2 - y1) / (x2 - x1)
-      print("The slope of the line is:", slope)
+        print(f"Slope: {(y2 - y1) / (x2 - x1):.2f}")
     else:
-      print("The slope of the line is undefined.")
+        print("Slope is undefined.")
 
-  elif formulam == "11":
-    text = "Pythagorean Theorem"
-    font = "slant"  
-
-    figlet = Figlet(font=font)
-    result = figlet.renderText(text)
-
-    color_green = '\033[92m'
-    reset_color = '\033[0m'
-
-    colored_result = color_green + result + reset_color
-
-    print(colored_result)
-    print("Pythagorean Theorem")
-    print("Formula: c^2 = a^2 + b^2")
-    a = float(input("Enter the length of side a: "))
-    b = float(input("Enter the length of side b: "))
+def pythagorean_theorem():
+    print("Formula: c² = a² + b²")
+    a = get_float_input("Enter a: ")
+    b = get_float_input("Enter b: ")
     c = math.sqrt(a**2 + b**2)
-    print("The length of side c is:", c)
+    print(f"Hypotenuse: {c:.2f}")
 
-  else:
-    print("Invalid fromula selected.")
+# ------------------- Physics Formulas -------------------
 
-elif subject == "2":
-  os.system('cls' if os.name == 'nt' else 'clear')
-  formulap = input("Select a formula:\n[1] Force\n[2] Acceleration\n")
+def force():
+    print("Formula: F = m * a")
+    mass = get_float_input("Enter mass (kg): ")
+    acceleration = get_float_input("Enter acceleration (m/s²): ")
+    print(f"Force: {mass * acceleration} N")
 
-else:
-  print("Invalid subject selected.")
+def acceleration():
+    print("Formula: a = (v_f - v_i) / t")
+    v_i = get_float_input("Enter initial velocity (m/s): ")
+    v_f = get_float_input("Enter final velocity (m/s): ")
+    time = get_float_input("Enter time (s): ")
+    print(f"Acceleration: {(v_f - v_i) / time:.2f} m/s²")
+
+def work():
+    print("Formula: W = F * d * cos(θ)")
+    force = get_float_input("Enter force (N): ")
+    distance = get_float_input("Enter distance (m): ")
+    angle = get_float_input("Enter angle (degrees): ")
+    work_done = force * distance * math.cos(math.radians(angle))
+    print(f"Work: {work_done:.2f} J")
+
+def kinetic_energy():
+    print("Formula: KE = (1/2) * m * v²")
+    mass = get_float_input("Enter mass (kg): ")
+    velocity = get_float_input("Enter velocity (m/s): ")
+    ke = 0.5 * mass * velocity**2
+    print(f"Kinetic Energy: {ke:.2f} J")
+
+# ------------------- Selection Functions -------------------
+
+def select_math_formula():
+    formulas = {
+        "1": area_of_triangle,
+        "2": area_of_rectangle,
+        "3": area_of_circle,
+        "4": perimeter_of_rectangle,
+        "5": circumference_of_circle,
+        "6": volume_of_cube,
+        "7": volume_of_sphere,
+        "8": distance_between_points,
+        "9": quadratic_formula,
+        "10": slope_of_line,
+        "11": pythagorean_theorem,
+    }
+
+    while True:
+        print("\nSelect a Math formula (or 'x' to exit):")
+        for key, value in formulas.items():
+            print(f"[{key}] {value.__name__.replace('_', ' ').title()}")
+        choice = get_input("> ")
+
+        if choice in formulas:
+            clear_console()
+            print_title("Mathematics")
+            formulas[choice]()
+        else:
+            print("Invalid selection. Try again.")
+
+def select_physics_formula():
+    formulas = {
+        "1": force,
+        "2": acceleration,
+        "3": work,
+        "4": kinetic_energy,
+    }
+
+    while True:
+        print("\nSelect a Physics formula (or 'x' to exit):")
+        for key, value in formulas.items():
+            print(f"[{key}] {value.__name__.replace('_', ' ').title()}")
+        choice = get_input("> ")
+
+        if choice in formulas:
+            clear_console()
+            print_title("Physics")
+            formulas[choice]()
+        else:
+            print("Invalid selection. Try again.")
+
+def select_subject():
+    while True:
+        clear_console()
+        print_title("CLPdev.sst")
+        print("Select a subject (or 'x' to exit):")
+        print("[1] Mathematics")
+        print("[2] Physics")
+        subject = get_input("> ")
+
+        if subject == "1":
+            clear_console()
+            print_title("Mathematics")
+            select_math_formula()
+        elif subject == "2":
+            clear_console()
+            print_title("Physics")
+            select_physics_formula()
+        else:
+            print("Invalid selection. Try again.")
+
+if __name__ == "__main__":
+    try:
+        select_subject()
+    except KeyboardInterrupt:
+        print("\nProgram interrupted. Exiting...")
+        sys.exit(0)
