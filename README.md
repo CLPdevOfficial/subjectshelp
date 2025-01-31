@@ -1,6 +1,6 @@
 Commands:
 
-git clone https://github.com/CLPdevOfficial/subjectshelp
-cd subjectshelp
-pip install requirements.txt
-python main.py
+git clone https://github.com/CLPdevOfficial/subjectshelp\n
+cd subjectshelp\n
+pip install requirements.txt\n
+python main.py\n
